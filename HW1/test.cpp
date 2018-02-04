@@ -1,14 +1,13 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-void accessPointer();
-void initChar(char *ptr);
-struct charPointers
-{
+struct charStruct
+{	//struct for charArray
 	char ** charArray[20];
 	int intArray[20];
 };
-
+void initChar(charStruct *ptr);
+void accessPointer();
 //Recursive function
 int f(int n)
 {
@@ -25,8 +24,7 @@ int main()
 {
 	srand(time(NULL)); //Random seed
 	int optionNum;
-	char *ptr = new char[20];
-	initChar(ptr);
+	charStruct charmander;//Single struct created
 	do{
 		cout << "Welcome! Please choose an option:\n1) Access a pointer\n";
 		cout << "2) List deallocated memory(index)\n3) Deallocate all memory\n4) Exit\n";
@@ -69,14 +67,16 @@ void accessPointer()
 	cin >> numChoice;
 }
 
-void initChar(char *ptr)
+void initChar(charStruct *ptr)
 {
+	for (int i =0;i <20;i++)
+	
 	for (int i = 0; i <20; i++)
 	{
-		ptr[i]= 'A' + rand()%26;
+		//ptr[i]= 'A' + rand()%26;
 	}
 	for (int i = 0; i <20; i++)
 	{
-		cout << ptr[i];
+		//cout << ptr[i];
 	}
 }
