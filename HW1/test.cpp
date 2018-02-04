@@ -9,20 +9,21 @@ struct charPointers
 	int intArray[20];
 };
 
-//REcursive function
+//Recursive function
 int f(int n)
 {
-//Return 2700 if zero
+	//Return 2700 if zero
 	if (n == 0)
  	{
 		return 2700;
 	}
-	else 
-		return (2*f(n-1));//2 TIMES PREVIOUS NUMBER
+	else //Return 2 * f(n-1)
+		return (2*f(n-1));
 
 }
 int main()
 {
+	srand(time(NULL)); //Random seed
 	int optionNum;
 	char *ptr = new char[20];
 	initChar(ptr);
@@ -53,6 +54,7 @@ int main()
 		}
 		else
 		{	cout << "invalid entry";
+			cin.ignore();
 		}
 	}while (optionNum !=4);
 return 0;
@@ -61,7 +63,9 @@ return 0;
 void accessPointer()
 {
 	int numChoice;
-	cout << "1)Print first 10 chars in chosen array\n2)pDelete all chars associated with this pointer\n3)Return to main menu\n";
+	cout << "Accessing pointer....\n";
+	cout << "1)Print first 10 chars in chosen array\n"
+<<"2)pDelete all chars associated with this pointer\n" <<"3)Return to main menu\n";
 	cin >> numChoice;
 }
 
