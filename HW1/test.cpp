@@ -56,6 +56,7 @@ void initializeNum(charStruct &ptr)
     for (int i=0;i<21;i++)
     {
         ptr.intArray[i] = f(i); //assign a value based on each index in array
+        cout << i << ") " <<ptr.intArray[i] << endl;
     }
 }
 int f(int n)
@@ -98,3 +99,4 @@ void accessPointer()
 	cout << "1)Print first 10 chars in chosen array\n" <<"2)pDelete all chars associated with this pointer\n" <<"3)Return to main menu\n";
 	cin >> numChoice;
 }
+
