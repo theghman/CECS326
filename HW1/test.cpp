@@ -4,7 +4,7 @@ using namespace std;
 struct charStruct
 {	//struct for charArray
 	char * charArray[20];
-	int intArray[20];
+	unsigned int intArray[20];
 };
 int f(int n); //Recursive function
 void initChar(charStruct &ptr);
@@ -53,7 +53,7 @@ return 0;
 
 void initializeNum(charStruct &ptr)
 {
-    for (int i=0;i<20;i++)
+    for (int i=0;i<21;i++)
     {
         ptr.intArray[i] = f(i); //assign a value based on each index in array
     }
@@ -77,16 +77,16 @@ void initChar(charStruct &ptr)
 {   
     char * holdchar;
     int SIZE;
-	for (int i = 0; i <19; i++)//Doesn't work with 19+
+	for (int i = 0; i <20; i++)//Doesn't work with 19+
 	{
 	    SIZE = ptr.intArray[i];
 	    holdchar = new char[SIZE];
-	    cout <<char('A'+ i) <<") "<< SIZE << endl;
 	    for (int j =0; j < SIZE; j++)
 	    {
-	        //holdchar[j]='A' + rand()%26;
+	        holdchar[j]='A' + rand()%26;
 	    }
 		ptr.charArray[i] = holdchar;
+		delete[] holdchar;
 	}
 }
 void accessPointer()
