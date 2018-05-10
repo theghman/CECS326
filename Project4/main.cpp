@@ -75,6 +75,7 @@ shmBUF - boolean to check if U var is available
 */
 void integerCheck(SEMAPHORE & sem, bool *shmBUF)
 {
+	while(true){
 	//Beginning of the critical section protected by semaphore
 	bool computeU = *shmBUF; //Check if U var is available
 	sem.P(SEMUV);
@@ -91,6 +92,7 @@ void integerCheck(SEMAPHORE & sem, bool *shmBUF)
 	}
 	sem.V(SEMUV);
 	//End of CS
+	}//end of wjile
 }
 /*
 This function will generate a random integer and check if it is divisible by U or V(per prompt)
@@ -103,15 +105,15 @@ void factorCheck(int factorOf)
 	srand(time(NULL)); //Prepare seed for random number
 	int randomNum = 101;	
 	//If randomNum is less than 100, while loop ends
-	
+
 	while(randomNum>100)
 	{
-		randomNum = rand();//Generate random number
-		cout << "PID "<<getpid() << " checking" << factorOf << "%" << randomNum <<"=" << randomNum%factorOf << "(!wq to quit all processes)\n";
+		randomNum = rand()%100000;//Generate random number %100000 to make it work
+		cout << "PID "<<getpid() << " checking " << randomNum << "%" << factorOf <<"=" << randomNum%factorOf << "(!wq to quit all processes)\n";
 		if (randomNum%factorOf==0)
 		break;//If U or V is a factor of the random number, break from the loop;
 	}
-	cout << "Done";
+	cout << getpid() << " completed task.\n";
 }
 /*
 This process will kill all process in the array and do the necessary cleanup
